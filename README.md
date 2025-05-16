@@ -115,7 +115,7 @@ Step-by-step:
 	```
 - Keep pushing until we have three nodes left in `a`.
 - **Sort Three**:
-  - dsfs
+  - TODO
 - Push back to stack `b`:
   - Every `b` node has a `target` / `closest bigger` `a` node
   - If a `closest bigger` `a` node not found, then the target node is the `min` value in `a`

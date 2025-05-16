@@ -47,6 +47,7 @@ SRC				+=	ft_memcmp.c
 SRC				+=	ft_memcpy.c
 SRC				+=	ft_memmove.c
 SRC				+=	ft_memset.c
+SRC				+=	ft_free_array.c
 
 vpath %.c $(SRC_DIR/ft_put)
 SRC				+=	ft_putchar_fd.c
@@ -75,6 +76,7 @@ SRC				+=	ft_atoi.c
 SRC				+=	ft_itoa.c
 SRC				+=	ft_tolower.c
 SRC				+=	ft_toupper.c
+SRC				==	ft_atol.c
 
 vpath %.c $(SRC_DIR/ft_printf)
 SRC				+=	ft_print_char.c
