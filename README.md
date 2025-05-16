@@ -123,7 +123,7 @@ Step-by-step:
   - If target node above `median`, do `ra()`.
   - If below, do `rra()`
 
-### 3. Pseudo Code
+### 3. Pseudo **Code**
 ```
 // Declare pointers to the two data structures (double linked list), one for stack `a` and one for stack `b`
 	// Set both pointers to NULL to avoid undefined behaviour and indicate we're starting with empty stacks
@@ -165,7 +165,7 @@ typedef struct s_stack_node
 	int				index;
 	int				push_cost;
 	bool				above_median;
-	bool				cheapest;
+	bool				**cheapest**;
 
 	struct s_stack_node		*target_node;
 	struct s_stack_node		*next;
