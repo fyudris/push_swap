@@ -6,11 +6,11 @@
 /*   By: fyudris <fyudris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 16:19:14 by fyudris           #+#    #+#             */
-/*   Updated: 2025/02/24 17:52:14 by fyudris          ###   ########.fr       */
+/*   Updated: 2025/05/20 22:21:20 by fyudris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../../includes/ft_printf.h"
 
 size_t	ft_strlen(const char *str)
 {

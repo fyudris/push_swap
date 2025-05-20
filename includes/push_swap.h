@@ -6,7 +6,7 @@
 /*   By: fyudris <fyudris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 12:30:05 by fyudris           #+#    #+#             */
-/*   Updated: 2025/05/16 22:09:53 by fyudris          ###   ########.fr       */
+/*   Updated: 2025/05/20 21:47:43 by fyudris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 
 # include <stdbool.h>
 # include <limits.h>
-#include "libft.h"
+# include "../libft/includes/libft.h"
+# include "../libft/includes/ft_printf.h"
 
 typedef struct s_stack_node
 {
-	int						nbr;
+	int						value;
 	int						index;
 	int						push_cost;
 	bool					above_median;
@@ -30,24 +31,45 @@ typedef struct s_stack_node
 }	t_stack_node;
 
 // Parsing
-bool	is_valid_input(int argc, char **argv);
-bool	is_valid_input(int argc, char **argv);
-char	**join_and_split_args(int argc, char **argv, int *count);
-bool	is_number(char *str);
-long	ft_atol(const char *str);
-void	free_array(char **array);
-
+char			**parse_args(char *s, char del);
 
 // Error Handling
+int				is_error_syntax(char *str);
+int				is_error_duplicate(t_stack_node *stack, int n);
+void			free_stack(t_stack_node **stack);
+void			free_and_print_error(t_stack_node **stack);
 
 // Stack Initilalization
+void			init_stack_a(t_stack_node **a, char **argv);
+t_stack_node	*get_cheapest_node(t_stack_node *stack);
+void			push_to_top(t_stack_node **stack, t_stack_node *head, char stack_name);
 
-// Node Initilaization
 
 // Stack Utilities
+int				stack_size(t_stack_node *stack);
+int				is_stack_sorted(t_stack_node *stack);
+t_stack_node	*get_min_node(t_stack_node *stack);
+t_stack_node	*get_max_node(t_stack_node *stack);
+t_stack_node	*get_last_node(t_stack_node *stack);
+void			assign_index(t_stack_node *stack);
+void			mark_cheapest_node(t_stack_node *stack);
+void			prepare_stack_a_for_push(t_stack_node *a, t_stack_node *b);
+void			prepare_stack_b_for_push(t_stack_node *, t_stack_node *b);
 
-// Commands
+// Stack Operations
+void	pa(t_stack_node **a, t_stack_node **b, bool suppress_output);
+void	pb(t_stack_node **b, t_stack_node **a, bool suppress_output);
+void	sa(t_stack_node **a, bool suppress_output);
+void	sb(t_stack_node **b, bool suppress_output);
+void	ss(t_stack_node **a, t_stack_node **b, bool suppress_output);
+void	ra(t_stack_node **a, bool suppress_output);
+void	rb(t_stack_node **b, bool suppress_output);
+void	rr(t_stack_node **a, t_stack_node **b, bool suppress_ouput);
+void	rra(t_stack_node **a, bool suppress_output);
+void	rrb(t_stack_node **b, bool suppress_output);
+void	rrr(t_stack_node **a, t_stack_node **b, bool suppress_output);
+void	sort_three(t_stack_node **a);
 
 // Algoritms
-
+void	perform_push_swap_sort(t_stack_node **a, t_stack_node **b);
 #endif

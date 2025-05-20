@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_str.c                                     :+:      :+:    :+:   */
+/*   sort_three.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fyudris <fyudris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/19 16:14:03 by fyudris           #+#    #+#             */
-/*   Updated: 2025/05/20 22:21:11 by fyudris          ###   ########.fr       */
+/*   Created: 2025/04/19 21:23:40 by fyudris           #+#    #+#             */
+/*   Updated: 2025/05/20 21:29:57 by fyudris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/ft_printf.h"
+#include"../../includes/push_swap.h"
 
-int	ft_print_str(const char *str)
+void	sort_three(t_stack_node **a)
 {
-	int		len;
-	ssize_t	res;
+	t_stack_node	*max_node;
 
-	if (!str)
-		str = "(null)";
-	len = ft_strlen(str);
-	res = (write(1, str, len));
-	if (res < 0)
-		return (-1);
-	return ((int) res);
+	max_node = get_max_node(*a);
+	if (max_node == *a)
+		ra(a, false);
+	else if ((*a)->next == max_node)
+		rra(a, false);
+	if ((*a)->value > (*a)->next->value)
+		sa(a, false);
 }

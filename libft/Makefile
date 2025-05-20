@@ -22,13 +22,13 @@ CPPFLAGS		+=	-MD
 # Sources
 SRC				:=
 vpath %.c $(SRC_DIR)/ft_is
-SRC				+=	ft_isalnum
-SRC				+=	ft_isalpha
-SRC				+=	ft_isascii
-SRC				+=	ft_isdigit
-SRC				+=	ft_isprint
+SRC				+=	ft_isalnum.c
+SRC				+=	ft_isalpha.c
+SRC				+=	ft_isascii.c
+SRC				+=	ft_isdigit.c
+SRC				+=	ft_isprint.c
 
-vpath %.c $(SRC_DIR/ft_lst)
+vpath %.c $(SRC_DIR)/ft_lst
 SRC				+=	ft_lstadd_back_bonus.c
 SRC				+=	ft_lstdelone_bonus.c
 SRC				+=	ft_lstmap_bonus.c
@@ -39,7 +39,7 @@ SRC				+=	ft_lstclear_bonus.c
 SRC				+=	ft_lstlast_bonus.c
 SRC				+=	ft_lstsize_bonus.c
 
-vpath %.c $(SRC_DIR/ft_mem)
+vpath %.c $(SRC_DIR)/ft_mem
 SRC				+=	ft_bzero.c
 SRC				+=	ft_calloc.c
 SRC				+=	ft_memchr.c
@@ -49,13 +49,13 @@ SRC				+=	ft_memmove.c
 SRC				+=	ft_memset.c
 SRC				+=	ft_free_array.c
 
-vpath %.c $(SRC_DIR/ft_put)
+vpath %.c $(SRC_DIR)/ft_put
 SRC				+=	ft_putchar_fd.c
 SRC				+=	ft_putendl_fd.c
 SRC				+=	ft_putnbr_fd.c
 SRC				+=	ft_putstr_fd.c
 
-vpath %.c $(SRC_DIR/ft_str)
+vpath %.c $(SRC_DIR)/ft_str
 SRC				+=	ft_split.c
 SRC				+=	ft_strchr.c
 SRC				+=	ft_strdup.c
@@ -71,14 +71,14 @@ SRC				+=	ft_strrchr.c
 SRC				+=	ft_strtrim.c
 SRC				+=	ft_substr.c
 
-vpath %.c $(SRC_DIR/ft_to)
+vpath %.c $(SRC_DIR)/ft_to
 SRC				+=	ft_atoi.c
 SRC				+=	ft_itoa.c
 SRC				+=	ft_tolower.c
 SRC				+=	ft_toupper.c
-SRC				==	ft_atol.c
+SRC				+=	ft_atol.c
 
-vpath %.c $(SRC_DIR/ft_printf)
+vpath %.c $(SRC_DIR)/ft_printf
 SRC				+=	ft_print_char.c
 SRC				+=	ft_printf.c
 SRC				+=	ft_print_hex.c
@@ -86,11 +86,10 @@ SRC				+=	ft_print_int.c
 SRC				+=	ft_print_pointer.c
 SRC				+=	ft_print_str.c
 SRC				+=	ft_print_unsigned_int.c
-SRC				+=	ft_strlen.c
 
 # Object Files
-OBJ			:=	$(SRCS:.c=.o)
-OBJ			:=	$(addprefix $(OBJ_DIR)/,$(OBJ))
+OBJ			:=	$(SRC:.c=.o)
+OBJ			:=	$(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
 # Dependencies
 DEPS		:=	$(OBJ:.o=.d)

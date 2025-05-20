@@ -6,11 +6,11 @@
 /*   By: fyudris <fyudris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 16:08:31 by fyudris           #+#    #+#             */
-/*   Updated: 2025/03/10 17:38:15 by fyudris          ###   ########.fr       */
+/*   Updated: 2025/05/20 22:21:00 by fyudris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../../includes/ft_printf.h"
 
 int	ft_print_char(char c)
 {

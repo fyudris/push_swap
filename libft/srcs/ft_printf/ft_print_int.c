@@ -6,11 +6,11 @@
 /*   By: fyudris <fyudris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 16:24:54 by fyudris           #+#    #+#             */
-/*   Updated: 2025/03/10 17:57:21 by fyudris          ###   ########.fr       */
+/*   Updated: 2025/05/20 22:21:07 by fyudris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../../includes/ft_printf.h"
 
 int	ft_print_int(int n)
 {

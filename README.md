@@ -172,3 +172,15 @@ typedef struct s_stack_node
 	struct s_stack_node		*prev;
 }	t_stack_node;
 ```
+
+## How to Test
+
+### 1. Test using provided checker
+```
+ARG="5 -3 42"; ./push_swap $ARG | ./checker_linux $ARG
+```
+./push_swap ""             # Should output Error
+./push_swap "2" "1" "2"    # Should output Error (duplicate)
+./push_swap "2147483648"   # Should output Error (too big)
+./push_swap "-2147483649"  # Should output Error (too small)
+./push_swap "2a"           # Should output Error (invalid integer)
