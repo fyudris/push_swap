@@ -48,6 +48,7 @@ SRC				+=	ft_memcpy.c
 SRC				+=	ft_memmove.c
 SRC				+=	ft_memset.c
 SRC				+=	ft_free_array.c
+SRC				+=	ft_realloc.c
 
 vpath %.c $(SRC_DIR)/ft_put
 SRC				+=	ft_putchar_fd.c

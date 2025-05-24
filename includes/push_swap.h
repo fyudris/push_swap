@@ -6,7 +6,7 @@
 /*   By: fyudris <fyudris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 12:30:05 by fyudris           #+#    #+#             */
-/*   Updated: 2025/05/20 21:47:43 by fyudris          ###   ########.fr       */
+/*   Updated: 2025/05/24 18:12:10 by fyudris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,5 @@ void	rrr(t_stack_node **a, t_stack_node **b, bool suppress_output);
 void	sort_three(t_stack_node **a);
 
 // Algoritms
-void	perform_push_swap_sort(t_stack_node **a, t_stack_node **b);
+void	push_swap(t_stack_node **a, t_stack_node **b);
 #endif

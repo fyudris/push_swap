@@ -6,7 +6,7 @@
 /*   By: fyudris <fyudris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:46:56 by fyudris           #+#    #+#             */
-/*   Updated: 2025/05/16 22:05:42 by fyudris          ###   ########.fr       */
+/*   Updated: 2025/05/24 14:48:39 by fyudris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void		*ft_memchr(const void *s, int c, size_t n);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 void		*ft_calloc(size_t nmemb, size_t size);
+void		*ft_realloc(void *ptr, size_t old_size, size_t new_size);
 char		*ft_strdup(const char *s);
 char		*ft_strjoin(char const *s1, char const *s2);
 char		*ft_strtrim(char const *s1, char const *set);

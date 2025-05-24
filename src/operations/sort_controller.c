@@ -6,7 +6,7 @@
 /*   By: fyudris <fyudris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 21:38:37 by fyudris           #+#    #+#             */
-/*   Updated: 2025/05/20 23:23:02 by fyudris          ###   ########.fr       */
+/*   Updated: 2025/05/24 18:11:57 by fyudris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,23 +104,44 @@ static void	rotate_min_to_top(t_stack_node **a)
  * @a: Pointer to stack A
  * @b: Pointer to stack B
  */
-void	perform_push_swap_sort(t_stack_node **a, t_stack_node **b)
+void	push_swap(t_stack_node **a, t_stack_node **b)
 {
+	// int	len_a;
+
+	// len_a = stack_size(*a);
+	// if (len_a-- > 3 && !is_stack_sorted(*a))
+	// {
+	// 	while (len_a-- > 3)
+	// 		push_cheapest_a_to_b(a, b);
+	// 	sort_three(a);
+	// }
+	// while (*b)
+	// {
+	// 	prepare_stack_b_for_push(*a, *b);
+	// 	push_b_to_target_in_a(a, b);
+	// }
+	// if (!is_stack_sorted(*a))
+	// 	rotate_min_to_top(a);
+
 	int	len_a;
 
 	len_a = stack_size(*a);
 	if (len_a-- > 3 && !is_stack_sorted(*a))
+		pb(b, a, false);
+	if (len_a-- > 3 && !is_stack_sorted(*a))
+		pb(b, a, false);
+	while (len_a-- > 3 && !is_stack_sorted(*a))
 	{
-		while (len_a-- > 3)
-			push_cheapest_a_to_b(a, b);
-		sort_three(a);
+		prepare_stack_a_for_push(*a, *b);
+		push_cheapest_a_to_b(a, b);
 	}
+	sort_three(a);
 	while (*b)
 	{
 		prepare_stack_b_for_push(*a, *b);
 		push_b_to_target_in_a(a, b);
 	}
-	if (!is_stack_sorted(*a))
-		rotate_min_to_top(a);
+	assign_index(*a);
+	rotate_min_to_top(a);
 }
 

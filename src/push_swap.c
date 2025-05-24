@@ -6,12 +6,25 @@
 /*   By: fyudris <fyudris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 12:40:59 by fyudris           #+#    #+#             */
-/*   Updated: 2025/05/20 21:51:55 by fyudris          ###   ########.fr       */
+/*   Updated: 2025/05/24 18:21:45 by fyudris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+/**
+ * Entry point for the push_swap program.
+ * Parse command-line arguments and initialize stack `a`.
+ * If stack `a` is not already sorted:
+ * 		- Sort two or three elements directly.
+ * 		- Calls push_swap() for more complex sorting.
+ * Frees all allocated memory at the end.
+ *
+ * @param argc Number of command-line arguments.
+ * @param argv Array of argument strings.
+ *
+ * @return int - Returns 0 on success, 1 if input is empty or invalid.
+ */
 int	main(int argc, char **argv)
 {
 	t_stack_node	*a;
@@ -31,7 +44,7 @@ int	main(int argc, char **argv)
 		else if (stack_size(a) == 3)
 			sort_three(&a);
 		else
-			perform_push_swap_sort(&a, &b);
+			push_swap(&a, &b);
 	}
 	free_stack(&a);
 	return (0);
