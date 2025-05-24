@@ -6,11 +6,20 @@
 /*   By: fyudris <fyudris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 12:45:18 by fyudris           #+#    #+#             */
-/*   Updated: 2025/05/20 22:58:54 by fyudris          ###   ########.fr       */
+/*   Updated: 2025/05/24 19:27:56 by fyudris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+// TODO: Int inputs works but String input is not hadled properly
+/**
+ * int inputs are sorted correctly, but input in form of String has different output (not sorted)
+ */
+// TODO: You have not handled int overflow (when you have a really long number value!)
+
+// TODO: Implement more streamlined testing mechanism
+
 
 /**
  * Returns the substring count in a string separated by delimiter
@@ -89,7 +98,7 @@ char	**parse_args(char *s, char del)
 	{
 		if (i == 0)
 		{
-			result[i] = malloc(sizeof(char));
+			// result[i] = malloc(sizeof(char));
 			if (!result)
 				return (NULL);
 			result[i++] = get_next_word(s, del);
@@ -99,21 +108,5 @@ char	**parse_args(char *s, char del)
 	}
 	result[i] = NULL;
 	return (result);
-
-	// int		word_count;
-	// char	**result;
-	// int		i;
-
-	// i = 0;
-	// word_count = count_words(s, del);
-	// if (!word_count)
-	// 	exit(1);
-	// result = malloc((size_t)(word_count + 1) * sizeof(char *));
-	// if (!result)
-	// 	return (NULL);
-	// while (i < word_count)
-	// 	result[i++] = get_next_word(s, del);
-	// result[i] = NULL;
-	// return (result);
 }
 

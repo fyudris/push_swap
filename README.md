@@ -184,3 +184,11 @@ ARG="5 -3 42"; ./push_swap $ARG | ./checker_linux $ARG
 ./push_swap "2147483648"   # Should output Error (too big)
 ./push_swap "-2147483649"  # Should output Error (too small)
 ./push_swap "2a"           # Should output Error (invalid integer)
+
+
+### 2. Check for Leaks
+```
+valgrind --leak-check=full --show-leak-kinds=all \
+         --error-exitcode=1 \
+         ./push_swap 2 1 3 6 5 8
+```
