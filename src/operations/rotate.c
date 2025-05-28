@@ -6,59 +6,52 @@
 /*   By: fyudris <fyudris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 21:05:12 by fyudris           #+#    #+#             */
-/*   Updated: 2025/05/20 21:15:19 by fyudris          ###   ########.fr       */
+/*   Updated: 2025/05/28 18:13:47 by fyudris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
 /**
- * Shift up all elements of stack a by 1.
- * The first element becomes the last one.
+ * rotate: shift all up by one
  */
-static void	rotate(t_stack_node **stack)
+static void rotate(t_stack_node **stack)
 {
-	t_stack_node	*last_node;
+    t_stack_node *first;
+    t_stack_node *last;
 
-	if (!*stack || !(*stack)->next)
-		return ;
-	last_node = get_last_node(*stack);
-	last_node->next = *stack;
-	*stack = (*stack)->next;
-	(*stack)->prev = NULL;
-	last_node->next->prev = last_node;
-	last_node->next->next = NULL;
+    if (!*stack || !(*stack)->next)
+        return ;
+    first = *stack;
+    last = *stack;
+    while (last->next)
+        last = last->next;
+    *stack = first->next;
+    (*stack)->prev = NULL;
+    first->next = NULL;
+    last->next = first;
+    first->prev = last;
 }
 
-/**
- * (rotate a): Shift up all elements of stack a by 1 in stack a.
- * The first element becomes the last one.
- */
-void	ra(t_stack_node **a, bool suppress_output)
+void ra(t_stack_node **a, bool write_op)
 {
-	rotate(a);
-	if (!suppress_output)
-		ft_printf("ra\n");
+    rotate(a);
+    if (write_op)
+        ft_putstr_fd("ra\n", 1);
 }
 
-/**
- * (rotate b): Shift up all elements of stack a by 1 in stack b.
- * The first element becomes the last one.
- */
-void	rb(t_stack_node **b, bool suppress_output)
+void rb(t_stack_node **b, bool write_op)
 {
-	rotate(b);
-	if (!suppress_output)
-		ft_printf("rb\n");
+    rotate(b);
+    if (write_op)
+        ft_putstr_fd("rb\n", 1);
 }
 
-/**
- * rr : ra and rb at the same time.
- */
-void	rr(t_stack_node **a, t_stack_node **b, bool suppress_ouput)
+void rr(t_stack_node **a, t_stack_node **b, bool write_op)
 {
-	rotate(a);
-	rotate(b);
-	if (!suppress_ouput)
-		ft_printf("rr\n");
+    rotate(a);
+    rotate(b);
+    if (write_op)
+        ft_putstr_fd("rr\n", 1);
 }
+

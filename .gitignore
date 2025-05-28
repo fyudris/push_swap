@@ -1,3 +1,9 @@
+.vs_code
+DS_STORE
+traces.txt
+Push-Swap-Tester/
+
+
 # Prerequisites
 *.d
 

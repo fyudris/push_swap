@@ -6,7 +6,7 @@
 /*   By: fyudris <fyudris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 18:05:52 by fyudris           #+#    #+#             */
-/*   Updated: 2025/05/27 13:35:29 by fyudris          ###   ########.fr       */
+/*   Updated: 2025/05/20 22:59:40 by fyudris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,23 @@ int	is_error_syntax(char *str)
 			return (1);
 	}
 	return (0);
+
+	// int	i;
+
+	// if (!str || !*str)
+	// 	return (1);
+	// i = 0;
+	// if (str[i] == '+' || str[i] == '-')
+	// 	i++;
+	// if (!str[i])
+	// 	return (1);
+	// while (str[i])
+	// {
+	// 	if (!ft_isdigit(str[i]))
+	// 		return (1);
+	// 	i++;
+	// }
+	// return (0);
 }
 
 /**

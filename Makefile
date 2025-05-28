@@ -3,6 +3,7 @@
 # Config
 NAME        := push_swap
 SRCDIR      := src
+MAINDIR		:= $(SRCDIR)/push_swap
 OPSDIR      := $(SRCDIR)/operations
 OBJDIR      := obj
 INCDIR      := includes
@@ -28,20 +29,37 @@ ifeq ($(DEBUG), 1)
 endif
 
 # Use vpath so make knows where to find the .c files
-vpath %.c $(SRCDIR)
+vpath %.c $(MAINDIR)
 vpath %.c $(OPSDIR)
 
 # Source files (no .c extensions)
 SRC :=
 
-# Top-level src files
+# Files from push_swap/
 SRC += push_swap
-SRC += parse
-SRC += stack_init
-SRC += error_handler
+SRC += parse_args
+SRC += validator
+SRC += init_stack
+SRC += index_utils
 SRC += stack_utils
-SRC += stack_a_utils
-SRC += stack_b_utils
+SRC += costs
+SRC += targets
+SRC += controller
+SRC += controller_helpers
+
+
+
+# # Source files (no .c extensions)
+# SRC :=
+
+# # Top-level src files
+# SRC += push_swap
+# SRC += parse
+# SRC += stack_init
+# SRC += error_handler
+# SRC += stack_utils
+# SRC += stack_a_utils
+# SRC += stack_b_utils
 
 # Files from operations/
 SRC += push
@@ -49,7 +67,7 @@ SRC += reverse_rotate
 SRC += rotate
 SRC += swap
 SRC += sort_three
-SRC += sort_controller
+# SRC += sort_controller
 
 # Object files
 OBJ := $(addprefix $(OBJDIR)/, $(SRC:=.o))
