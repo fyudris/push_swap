@@ -6,7 +6,7 @@
 /*   By: fyudris <fyudris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 19:27:01 by fyudris           #+#    #+#             */
-/*   Updated: 2025/05/28 19:31:22 by fyudris          ###   ########.fr       */
+/*   Updated: 2025/05/28 22:38:44 by fyudris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,17 @@ void push_b_to_target_in_a(t_stack_node **a, t_stack_node **b)
  */
 void rotate_min_to_top(t_stack_node **a)
 {
-    t_stack_node *min_node = get_min_node(*a);
+    t_stack_node	*current_min_node;
 
-    while ((*a)->value != min_node->value)
+	if (!a || !*a || !(*a)->next)
+		return ;
+
+	current_min_node = get_min_node(*a);
+	if (!current_min_node)
+		return ;
+    while ((*a)->value != current_min_node->value)
     {
-        if (min_node->above_median)
+        if (get_min_node(*a)->above_median)
             ra(a, true);
         else
             rra(a, true);

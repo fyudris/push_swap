@@ -6,7 +6,7 @@
 /*   By: fyudris <fyudris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 12:30:05 by fyudris           #+#    #+#             */
-/*   Updated: 2025/05/28 20:40:23 by fyudris          ###   ########.fr       */
+/*   Updated: 2025/05/28 22:35:03 by fyudris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int				is_error_duplicate(t_stack_node *stack, int n);
 /* Stack Initialization */
 void	init_stack(t_stack_node **a, char **nums);
 void	free_stack(t_stack_node **stack);
+void	free_str_array(char **arr);
 
 /* Stack Utils */
 int		stack_size(t_stack_node *stack);

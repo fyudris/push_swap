@@ -6,7 +6,7 @@
 /*   By: fyudris <fyudris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 12:40:59 by fyudris           #+#    #+#             */
-/*   Updated: 2025/05/28 20:11:26 by fyudris          ###   ########.fr       */
+/*   Updated: 2025/05/28 23:35:45 by fyudris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,22 @@ int main(int argc, char **argv)
     b = NULL;
     if (argc < 2 || (argc == 2 && argv[1][0] == '\0'))
         return (1);
-
-    /* 2) Parse tokens */
     if (argc == 2)
-        nums = parse_args(argv[1]);
+	{
+		nums = parse_args(argv[1]);
+		if (!nums)
+			return (1);
+	}
     else
         nums = &argv[1];
     validator(nums);
     init_stack(&a, nums);
     if (!is_stack_sorted(a))
         push_swap(&a, &b);
-
-    /* 6) Clean up */
     free_stack(&a);
+	free_stack(&b);
+	if (argc == 2)
+		free_str_array(nums);
     return (0);
 }
 
@@ -111,28 +114,3 @@ void push_swap(t_stack_node **a, t_stack_node **b)
     assign_index(*a);
     rotate_min_to_top(a);
 }
-
-// void	push_swap(t_stack_node **a, t_stack_node **b)
-// {
-//     pb(b, a, true);
-//     pb(b, a, true);
-//     while (stack_size(*a) > 3)
-//     {
-//         assign_index(*a);
-//         assign_index(*b);
-//         assign_targets_in_b(*a, *b);
-//         calculate_push_costs(*a, *b);
-//         mark_cheapest_node(*a);
-//         push_cheapest_a_to_b(a, b);
-//     }
-//     sort_three(a);
-//     while (*b)
-//     {
-//         assign_index(*a);
-//         assign_index(*b);
-//         assign_targets_in_a(*a, *b);
-//         push_b_to_target_in_a(a, b);
-//     }
-//     assign_index(*a);
-//     rotate_min_to_top(a);
-// }

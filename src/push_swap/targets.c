@@ -6,7 +6,7 @@
 /*   By: fyudris <fyudris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 19:09:05 by fyudris           #+#    #+#             */
-/*   Updated: 2025/05/28 19:15:19 by fyudris          ###   ########.fr       */
+/*   Updated: 2025/05/28 22:59:49 by fyudris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,28 @@
  */
 void	assign_targets_in_b(t_stack_node *a, t_stack_node *b)
 {
-	while (a)
-	{
-		long best_val = LONG_MIN;
-		t_stack_node *best_node = NULL;
-		t_stack_node *cur = b;
-		while (cur)
-		{
-			if (cur->value < a->value && cur->value > best_val)
-			{
-				best_val  = cur->value;
-				best_node = cur;
-			}
-			cur = cur->next;
-		}
-		if (!best_node)
-			best_node = get_max_node(b);
+	t_stack_node *current_a = a;
 
-		a->target_node = best_node;
-		a = a->next;
-	}
+ 	while (current_a) {
+        long best_val = LONG_MIN;
+        t_stack_node *target_in_b = NULL;
+        t_stack_node *current_b = b;
+
+        while (current_b) {
+            if (current_b->value < current_a->value && current_b->value > best_val) {
+                best_val = current_b->value;
+                target_in_b = current_b;
+            }
+            current_b = current_b->next;
+        }
+
+        if (target_in_b == NULL) { // No node in B is smaller than current_a OR B is empty
+            target_in_b = get_max_node(b); // Get the largest element in B
+                                                // If b_stack is empty, get_max_node returns NULL.
+        }
+        current_a->target_node = target_in_b; // This can assign NULL if b_stack was empty.
+        current_a = current_a->next;
+    }
 }
 /**
  * assign_targets_in_a:

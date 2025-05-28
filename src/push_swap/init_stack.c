@@ -6,7 +6,7 @@
 /*   By: fyudris <fyudris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 12:54:06 by fyudris           #+#    #+#             */
-/*   Updated: 2025/05/28 18:25:19 by fyudris          ###   ########.fr       */
+/*   Updated: 2025/05/28 22:34:46 by fyudris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,25 @@ void	free_stack(t_stack_node **stack)
 		current = temp;
 	}
 	*stack = NULL;
+}
+
+/**
+ * To deallocate memory used by an array of strings (char **), where both the
+ * array itself and each individual string within it were dynamically allocated.
+ * Used for the nums variable when it's populated by splitting a command-line
+ * argument string.
+ */
+void	free_str_array(char **arr)
+{
+    int i;
+
+    if (!arr)
+        return;
+    i = 0;
+    while (arr[i])
+    {
+        free(arr[i]);
+        i++;
+    }
+    free(arr);
 }

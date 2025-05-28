@@ -6,7 +6,7 @@
 /*   By: fyudris <fyudris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 17:49:16 by fyudris           #+#    #+#             */
-/*   Updated: 2025/05/28 19:12:12 by fyudris          ###   ########.fr       */
+/*   Updated: 2025/05/28 23:35:23 by fyudris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,29 @@
  * node = *(&node) - *(&node) + node;
  * trick to reset pointer
  */
-void	assign_index(t_stack_node *node)
-{
-	int	i;
-	int	median;
-	int	size;
+void assign_index(t_stack_node *node_head) {
+    int i = 0;
+    int list_size = 0;
+    int median_idx;
+    t_stack_node *current = node_head;
 
-	size = 0;
-	i = 0;
-	while (node)
-	{
-		size++;
-		node = node->next;
-	}
-	median = size / 2;
-	node = *(&node) - *(&node) + node;
-	i = 0;
-	while (node)
-	{
-		node->index = i;
-		node->above_median = (i <= median);
-		i++;
-		node = node->next;
-	}
+    if (!node_head)
+		return;
+
+    while (current) {
+        list_size++;
+        current = current->next;
+    }
+
+    if (list_size == 0)
+		return;
+    median_idx = list_size / 2;
+
+    current = node_head;
+    while (current) {
+        current->index = i;
+        current->above_median = (i <= median_idx);
+        current = current->next;
+        i++;
+    }
 }
