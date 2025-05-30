@@ -6,7 +6,7 @@
 /*   By: fyudris <fyudris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 16:37:48 by fyudris           #+#    #+#             */
-/*   Updated: 2025/05/28 16:52:24 by fyudris          ###   ########.fr       */
+/*   Updated: 2025/05/30 18:46:25 by fyudris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static	int	valid_number(char *s)
 	i = 0;
 	if (s[i] == '+' || s[i] == '-')
 		i++;
-	if(!s[i])
+	if (!s[i])
 		return (0);
 	while (s[i])
 	{

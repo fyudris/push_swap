@@ -6,7 +6,7 @@
 /*   By: fyudris <fyudris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 21:23:40 by fyudris           #+#    #+#             */
-/*   Updated: 2025/05/28 18:49:27 by fyudris          ###   ########.fr       */
+/*   Updated: 2025/05/30 18:29:32 by fyudris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ void	sort_three(t_stack_node **a)
 	int	second;
 	int	third;
 
-	first  = (*a)->value;
+	first = (*a)->value;
 	second = (*a)->next->value;
-	third  = (*a)->next->next->value;
+	third = (*a)->next->next->value;
 	if (first > second && second < third && first < third)
 		sa(a, true);
 	else if (first > second && second > third)

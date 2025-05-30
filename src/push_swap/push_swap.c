@@ -6,7 +6,7 @@
 /*   By: fyudris <fyudris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 12:40:59 by fyudris           #+#    #+#             */
-/*   Updated: 2025/05/28 23:35:45 by fyudris          ###   ########.fr       */
+/*   Updated: 2025/05/30 19:16:39 by fyudris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,33 +22,67 @@
  * 5) If not already sorted, run the full push_swap algorithm.
  * 6) Free all nodes and exit 0.
  */
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    char          **nums;
-    t_stack_node  *a;
-    t_stack_node  *b;
+	char			**nums;
+	t_stack_node	*a;
+	t_stack_node	*b;
 
-    a = NULL;
-    b = NULL;
-    if (argc < 2 || (argc == 2 && argv[1][0] == '\0'))
-        return (1);
-    if (argc == 2)
+	a = NULL;
+	b = NULL;
+	if (argc < 2 || (argc == 2 && argv[1][0] == '\0'))
+		return (1);
+	if (argc == 2)
 	{
 		nums = parse_args(argv[1]);
 		if (!nums)
 			return (1);
 	}
-    else
-        nums = &argv[1];
-    validator(nums);
-    init_stack(&a, nums);
-    if (!is_stack_sorted(a))
-        push_swap(&a, &b);
-    free_stack(&a);
+	else
+		nums = &argv[1];
+	validator(nums);
+	init_stack(&a, nums);
+	if (!is_stack_sorted(a))
+		push_swap(&a, &b);
+	free_stack(&a);
 	free_stack(&b);
 	if (argc == 2)
 		free_str_array(nums);
-    return (0);
+	return (0);
+}
+
+/**
+ * Helper function to execute moves from stack A to stack B
+ * until only 3 or fewer elements remain in A.
+ * This part involves identifying the "cheapest" element to move.
+ */
+static void	execute_a_to_b_phase(t_stack_node **a, t_stack_node **b)
+{
+	while (stack_size(*a) > 3)
+	{
+		assign_index(*a);
+		assign_index(*b);
+		assign_targets_in_b(*a, *b);
+		calculate_push_costs(*a, *b);
+		mark_cheapest_node(*a);
+		push_cheapest_a_to_b(a, b);
+	}
+}
+
+/**
+ * Helper function to execute moves from stack B back to stack A
+ * until stack B is empty.
+ * This part involves finding the correct sorted position in A for B-elements.
+ */
+static void	execute_b_to_a_phase(t_stack_node **a, t_stack_node **b)
+{
+	while (*b)
+	{
+		assign_index(*a);
+		assign_index(*b);
+		assign_targets_in_a(*a, *b);
+		push_b_to_target_in_a(a, b);
+	}
 }
 
 /**
@@ -68,49 +102,66 @@ int main(int argc, char **argv)
  *      - rotate A so its target is on top, then pa
  * 5) Finally rotate A so that its  minimum value is at the head.
  */
-void push_swap(t_stack_node **a, t_stack_node **b)
+void	push_swap(t_stack_node **a, t_stack_node **b)
 {
-    int len = stack_size(*a);
+	int	initial_len_a;
+	int	current_len_a;
 
-    /* Step 1: seed B with two only if >3 */
-    if (len > 3)
-    {
-        pb(b, a, true);
-        pb(b, a, true);
-    }
-
-    /* Step 2: while more than 3 remain in A, push cheapest */
-    while (stack_size(*a) > 3)
-    {
-        assign_index(*a);
-        assign_index(*b);
-        assign_targets_in_b(*a, *b);
-        calculate_push_costs(*a, *b);
-        mark_cheapest_node(*a);
-        push_cheapest_a_to_b(a, b);
-    }
-
-    /* Step 3: sort the final small A */
-    len = stack_size(*a);
-    if (len == 2)
-    {
-        sa(a, true);
-    }
-    else if (len == 3)
-    {
-        sort_three(a);
-    }
-
-    /* Step 4: reinsert everything from B */
-    while (*b)
-    {
-        assign_index(*a);
-        assign_index(*b);
-        assign_targets_in_a(*a, *b);
-        push_b_to_target_in_a(a, b);
-    }
-
-    /* Step 5: final rotate so min is on top */
-    assign_index(*a);
-    rotate_min_to_top(a);
+	if (is_stack_sorted(*a))
+		return ;
+	initial_len_a = stack_size(*a);
+	if (initial_len_a > 3)
+	{
+		pb(b, a, true);
+		pb(b, a, true);
+	}
+	execute_a_to_b_phase(a, b);
+	current_len_a = stack_size(*a);
+	if (current_len_a == 2)
+	{
+		if ((*a)->value > (*a)->next->value)
+			sa(a, true);
+	}
+	else if (current_len_a == 3)
+	{
+		sort_three(a);
+	}
+	execute_b_to_a_phase(a, b);
+	assign_index(*a);
+	rotate_min_to_top(a);
 }
+
+// void push_swap(t_stack_node **a, t_stack_node **b)
+// {
+//     int len;
+
+// 	len = stack_size(*a);
+//     if (len > 3)
+//     {
+//         pb(b, a, true);
+//         pb(b, a, true);
+//     }
+//     while (stack_size(*a) > 3)
+//     {
+//         assign_index(*a);
+//         assign_index(*b);
+//         assign_targets_in_b(*a, *b);
+//         calculate_push_costs(*a, *b);
+//         mark_cheapest_node(*a);
+//         push_cheapest_a_to_b(a, b);
+//     }
+//     len = stack_size(*a);
+//     if (len == 2)
+//         sa(a, true);
+//     else if (len == 3)
+//         sort_three(a);
+//     while (*b)
+//     {
+//         assign_index(*a);
+//         assign_index(*b);
+//         assign_targets_in_a(*a, *b);
+//         push_b_to_target_in_a(a, b);
+//     }
+//     assign_index(*a);
+//     rotate_min_to_top(a);
+// }

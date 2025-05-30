@@ -6,7 +6,7 @@
 /*   By: fyudris <fyudris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 12:45:18 by fyudris           #+#    #+#             */
-/*   Updated: 2025/05/28 16:11:09 by fyudris          ###   ########.fr       */
+/*   Updated: 2025/05/30 18:35:53 by fyudris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  * increments the word count each time a new sequence of non-delimiter
  * characters begins.
  */
-static	int count_words(char *s, char del)
+static int	count_words(char *s, char del)
 {
 	int	count;
 	int	inside;
@@ -44,6 +44,7 @@ static	int count_words(char *s, char del)
 	}
 	return (count);
 }
+
 /**
  * get_word: extract the next word from string starting at index
  * @param s: input string
@@ -54,7 +55,7 @@ static	int count_words(char *s, char del)
  * token until the next delimiter or end, allocates a new string, and
  * returns it. On allocation failure, calls exit_error().
  */
-static char *get_word(char *s, int *i, char del)
+static char	*get_word(char *s, int *i, char del)
 {
 	int		start;
 	int		len;
@@ -70,7 +71,7 @@ static char *get_word(char *s, int *i, char del)
 		len++;
 	}
 	res = ft_substr(s, start, len);
-	if(!res)
+	if (!res)
 		exit_error();
 	return (res);
 }
@@ -108,6 +109,7 @@ char	**parse_args(char *str)
 	res[i] = NULL;
 	return (res);
 }
+
 /**
  * exit_error: writes "Error\n" to stderr and exits
  */

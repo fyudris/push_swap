@@ -6,7 +6,7 @@
 /*   By: fyudris <fyudris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 12:54:06 by fyudris           #+#    #+#             */
-/*   Updated: 2025/05/28 22:34:46 by fyudris          ###   ########.fr       */
+/*   Updated: 2025/05/30 18:34:33 by fyudris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,15 +95,15 @@ void	free_stack(t_stack_node **stack)
  */
 void	free_str_array(char **arr)
 {
-    int i;
+	int	i;
 
-    if (!arr)
-        return;
-    i = 0;
-    while (arr[i])
-    {
-        free(arr[i]);
-        i++;
-    }
-    free(arr);
+	if (!arr)
+		return ;
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
 }

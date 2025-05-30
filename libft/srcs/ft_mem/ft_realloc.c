@@ -6,7 +6,7 @@
 /*   By: fyudris <fyudris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 14:47:33 by fyudris           #+#    #+#             */
-/*   Updated: 2025/05/24 15:02:42 by fyudris          ###   ########.fr       */
+/*   Updated: 2025/05/30 18:03:26 by fyudris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	*ft_realloc(void *ptr, size_t old_size, size_t new_size)
 {
+	void	*new_ptr;
+	int		copy_size;
+
 	if (!ptr)
 		return (malloc(new_size));
 	if (new_size == 0)
@@ -21,9 +24,6 @@ void	*ft_realloc(void *ptr, size_t old_size, size_t new_size)
 		free(ptr);
 		return (NULL);
 	}
-	void	*new_ptr;
-	int	copy_size;
-
 	new_ptr = malloc(new_size);
 	if (!new_ptr)
 		return (NULL);
