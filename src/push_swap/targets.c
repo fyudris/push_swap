@@ -6,7 +6,7 @@
 /*   By: fyudris <fyudris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 19:09:05 by fyudris           #+#    #+#             */
-/*   Updated: 2025/05/30 19:20:47 by fyudris          ###   ########.fr       */
+/*   Updated: 2025/06/02 14:38:30 by fyudris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@
  * assign_targets_in_b:
  * For each node in stack A (let's call it nodeA), this function finds its
  * target_node in stack B. The logic is to find the node in B (nodeB_target)
- * such that nodeB_target->value is the largest value in B that is still less than nodeA->value.
+ * such that nodeB_target->value is the largest value in B that is still
+ * less than nodeA->value.
  *
- * If no such node exists (e.g., nodeA is smaller than all elements in B, or B is empty/small),
- * nodeA->target_node is set to the node with the maximum value in stack B. This helps place nodeA
- * correctly relative to B's current largest element.
+ * If no such node exists (e.g., nodeA is smaller than all elements in B,
+ * or B is empty/small), nodeA->target_node is set to the node with
+ * the maximum value in stack B. This helps place nodeA correctly relative
+ * to B's current largest element.
  *
  * Later we’ll rotate B so that this target_node is at the top, then pa.
  */

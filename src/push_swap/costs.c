@@ -6,7 +6,7 @@
 /*   By: fyudris <fyudris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 19:15:41 by fyudris           #+#    #+#             */
-/*   Updated: 2025/05/30 19:26:17 by fyudris          ###   ########.fr       */
+/*   Updated: 2025/06/02 14:37:51 by fyudris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,9 @@ void	calculate_push_costs(t_stack_node *a, t_stack_node *b)
 
 /**
  * mark_cheapest_node:
- * Scan all A-nodes and set the one with minimal push_cost to node->cheapest = true.
- * 
+ * Scan all A-nodes and set the one with minimal push_cost to
+ * node->cheapest = true.
+ *
  * That tells our controller: “this is the best next move.”
  */
 void	mark_cheapest_node(t_stack_node *a)
